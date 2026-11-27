@@ -55,7 +55,7 @@
           d.el("span", { className: "msg__name", text: "Kiela AI" }),
           d.el("span", { className: "msg__time", text: d.formatTime(message.createdAt) })
         ),
-        d.el("p", { className: "msg__text", text: message.content }),
+        d.renderMarkdown(message.content),
         message.sources.length ? createSources(message.sources) : null,
         onRate ? createFeedback(onRate) : null
       )
