@@ -45,14 +45,50 @@
       d.el("span", { className: "feedback__label", text: "Esta orientação foi útil?" }), actions);
   }
 
+  function createSpeechButton(message) {
+    if (!K.services.speech || !K.services.speech.isSupported()) return null;
+
+    var iconSpan = d.icon("volume_up", "icon--sm");
+    var labelSpan = d.el("span", { className: "speech-btn__label", text: "Ouvir" });
+    var btn = d.el("button", {
+      type: "button",
+      className: "speech-btn",
+      title: "Ouvir orientação em voz alta",
+      "aria-label": "Ouvir orientação em voz alta",
+      onClick: function () {
+        K.services.speech.speak(message.id, message.content, function (isPlaying) {
+          if (isPlaying) {
+            btn.classList.add("speech-btn--active");
+            iconSpan.textContent = "stop";
+            labelSpan.textContent = "Parar";
+            btn.setAttribute("aria-label", "Parar leitura em voz alta");
+            btn.title = "Parar leitura";
+          } else {
+            btn.classList.remove("speech-btn--active");
+            iconSpan.textContent = "volume_up";
+            labelSpan.textContent = "Ouvir";
+            btn.setAttribute("aria-label", "Ouvir orientação em voz alta");
+            btn.title = "Ouvir orientação em voz alta";
+          }
+        });
+      },
+    }, iconSpan, labelSpan);
+
+    return btn;
+  }
+
   /** options.onRate(helpful): se não vier, não mostra os botões de feedback. */
   K.components.createAssistantBubble = function (message, options) {
     var onRate = options && options.onRate;
+    var speechBtn = createSpeechButton(message);
     return d.el("div", { className: "msg msg--assistant fade-in" },
       d.el("div", { className: "msg__avatar" }, d.icon("medical_services", "icon--md")),
       d.el("div", { className: "msg__bubble" },
         d.el("div", { className: "msg__header" },
-          d.el("span", { className: "msg__name", text: "Kiela AI" }),
+          d.el("div", { className: "msg__header-title" },
+            d.el("span", { className: "msg__name", text: "Kiela AI" }),
+            speechBtn
+          ),
           d.el("span", { className: "msg__time", text: d.formatTime(message.createdAt) })
         ),
         d.renderMarkdown(message.content),
