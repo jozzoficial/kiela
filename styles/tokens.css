@@ -1,0 +1,84 @@
+/* Design tokens (Stitch: "Humane Clinical Public Health").
+   Mudar uma cor ou um espaçamento aqui muda-o no site inteiro. */
+:root {
+  /* superfícies */
+  --c-surface: #f9f9ff;
+  --c-surface-low: #f0f3ff;
+  --c-surface-mid: #e7eeff;
+  --c-surface-high: #dee8ff;
+  --c-surface-highest: #d8e3fb;
+  --c-white: #ffffff;
+
+  /* texto e contornos */
+  --c-text: #111c2d;
+  --c-text-soft: #3e4947;
+  --c-outline: #6e7977;
+  --c-outline-soft: #bdc9c6;
+
+  /* verde azulado (principal) */
+  --c-primary: #005c55;
+  --c-primary-strong: #0d766e;
+  --c-on-primary: #ffffff;
+  --c-on-primary-soft: #a3faef;
+  --c-primary-tint: #9bf2e8;
+  --c-on-primary-tint: #00201d;
+
+  /* laranja (avisos) e vermelho (urgência) */
+  --c-secondary: #904d00;
+  --c-secondary-tint: #ffdcc3;
+  --c-danger: #a7000f;
+  --c-danger-tint: #ffdad6;
+  --c-danger-text: #93000a;
+
+  --c-warn-bg: #fef3c7;
+  --c-warn-tag: #fde68a;
+  --c-warn-accent: #f59e0b;
+  --c-warn-title: #92400e;
+  --c-warn-text: #78350f;
+  --c-warn-button: #b45309;
+  --c-warn-button-hover: #92400e;
+
+  --c-error-bg: #fee2e2;
+  --c-error-accent: #dc2626;
+  --c-error-title: #991b1b;
+  --c-error-text: #7f1d1d;
+
+  /* espaçamentos */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 4rem;
+
+  /* margens laterais da página */
+  --margin: 1rem;
+
+  /* cantos */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 9999px;
+
+  /* sombras */
+  --shadow-sm: 0 1px 3px rgba(17, 28, 45, 0.08), 0 1px 2px rgba(17, 28, 45, 0.04);
+  --shadow-md: 0 6px 16px rgba(17, 28, 45, 0.1);
+  --shadow-lg: 0 16px 40px rgba(17, 28, 45, 0.14);
+
+  /* medidas */
+  --max-width: 1200px;
+  --header-height: 4rem;
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+  :root { --margin: 1.5rem; }
+}
+@media (min-width: 900px) {
+  :root { --header-height: 5rem; } /* mesmo ponto de viragem do menu (ver layout.css) */
+}
+@media (min-width: 1024px) {
+  :root { --margin: 2.5rem; }
+}

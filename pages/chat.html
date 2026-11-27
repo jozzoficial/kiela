@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conversar · Kiela AI</title>
+<meta name="description" content="Faça a sua pergunta ao Kiela AI sobre sintomas, prevenção e epidemias.">
+<meta name="theme-color" content="#0d766e">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&icon_names=arrow_forward,bed,bolt,call,chat,chat_bubble,check_circle,contact_phone,done,emergency,error,flag,forum,health_and_safety,home,hourglass_top,info,library_books,local_hospital,medical_services,open_in_new,pest_control,privacy_tip,public,refresh,report_problem,send,signal_cellular_alt,smart_toy,sms,sync,task_alt,thumb_down,thumb_up,translate,vaccines,verified_user,warning,water_drop,wifi_off&display=swap">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/base.css">
+<link rel="stylesheet" href="../styles/layout.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="stylesheet" href="../styles/chat.css">
+</head>
+<body data-base="../" class="chat-page">
+<a class="skip-link" href="#content">Saltar para o conteúdo</a>
+<div id="site-header"></div>
+<main class="page-main" id="content">
+
+  <section class="chat-statusbar" aria-label="Estado do assistente">
+    <div class="container chat-statusbar__inner">
+      <div class="status-pill" id="agent-status" data-state="connecting" role="status">
+        <span class="status-pill__dot"></span>
+        <span class="status-pill__text" id="agent-status-text">A ligar ao assistente...</span>
+      </div>
+      <button class="btn btn--soft" id="new-chat-button" type="button"><span class="material-symbols-outlined icon icon--sm" aria-hidden="true">refresh</span>Nova conversa</button>
+    </div>
+  </section>
+
+  <div class="chat-body">
+    <div class="container chat-layout">
+      <div class="chat-main">
+        <div class="message-list" id="message-list" role="log" aria-live="polite" aria-label="Conversa com o Kiela AI"></div>
+      </div>
+
+      <aside class="chat-aside" aria-label="Informação útil">
+        <div class="aside-card aside-card--help">
+          <div class="aside-card__head"><span class="material-symbols-outlined icon icon--md" aria-hidden="true">contact_phone</span>Linhas de socorro</div>
+          <p class="aside-card__title">Precisa de transporte médico urgente?</p>
+          <p class="aside-card__text">Em caso de emergência, ligue para o número de socorro.</p>
+          <a class="btn btn--light btn--lg btn--block" href="tel:112" data-emergency-call><span class="material-symbols-outlined icon icon--md" aria-hidden="true">call</span>Ligar <span data-emergency-number>112</span> (Emergência)</a>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card__head"><span class="material-symbols-outlined icon icon--md" aria-hidden="true">water_drop</span>Prevenção comunitária</div>
+          <p class="aside-card__text">Beber apenas água fervida ou devidamente tratada e lavar as mãos com frequência ajudam a prevenir a cólera e outras diarreias, sobretudo na estação chuvosa.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <section class="composer-bar" aria-label="Escrever pergunta">
+    <div class="container composer-bar__inner">
+      <form class="composer" id="chat-form" autocomplete="off">
+        <div class="composer__field">
+          <span class="material-symbols-outlined icon icon--md" aria-hidden="true">chat</span>
+          <label class="visually-hidden" for="question-input">Escreva a sua dúvida</label>
+          <input class="composer__input" id="question-input" type="text" enterkeyhint="send" autocomplete="off" maxlength="500" placeholder="Escreva aqui a sua dúvida sobre sintomas ou prevenção...">
+        </div>
+        <button class="btn btn--primary composer__send" id="send-button" type="submit">
+          <span class="composer__send-label">Enviar</span><span class="material-symbols-outlined icon icon--md" aria-hidden="true">send</span>
+        </button>
+      </form>
+      <p class="composer__note"><span class="material-symbols-outlined icon icon--sm" aria-hidden="true">privacy_tip</span>O Kiela AI pode cometer erros. Confirme sempre com um profissional de saúde.</p>
+    </div>
+  </section>
+
+</main>
+<div id="site-footer"></div>
+<script src="../src/config/env.js"></script>
+<script src="../src/config/contacts.js"></script>
+<script src="../src/utils/dom.js"></script>
+<script src="../src/utils/http.js"></script>
+<script src="../src/models/message.js"></script>
+<script src="../src/models/conversation.js"></script>
+<script src="../src/services/supabaseClient.js"></script>
+<script src="../src/services/authService.js"></script>
+<script src="../src/services/fakeAgent.js"></script>
+<script src="../src/services/agentService.js"></script>
+<script src="../src/services/conversationService.js"></script>
+<script src="../src/services/feedbackService.js"></script>
+<script src="../src/components/header.js"></script>
+<script src="../src/components/footer.js"></script>
+<script src="../src/components/userBubble.js"></script>
+<script src="../src/components/assistantBubble.js"></script>
+<script src="../src/components/assistanceCard.js"></script>
+<script src="../src/components/typingIndicator.js"></script>
+<script src="../src/components/waitCard.js"></script>
+<script src="../src/components/errorCard.js"></script>
+<script src="../src/components/welcomeCard.js"></script>
+<script src="../src/utils/page.js"></script>
+<script src="../src/controllers/chatController.js"></script>
+</body>
+</html>
